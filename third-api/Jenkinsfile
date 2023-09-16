@@ -1,5 +1,6 @@
 pipeline{
   agent {label 'ubuntu'}
+  options { buildDiscarder(logRotator(numToKeepStr: '3'))}
   stages{
     stage('Say Hello!'){
       steps{
