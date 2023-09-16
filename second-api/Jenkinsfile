@@ -1,0 +1,12 @@
+pipeline{
+  agent {label 'ubuntu'}
+  stages{
+    stage('Say Hello!'){
+      steps{
+        script {
+          echo "Hello, Friend"
+        }
+      }
+    }
+  }
+}
