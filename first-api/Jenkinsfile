@@ -22,7 +22,7 @@ pipeline{
     stage('Print the parameters'){
       steps{
         script{
-          echo "The environment is: ${paramms.env}"
+          echo "The environment is: ${params.env}"
           echo "The region is: ${params.region}"
           echo "The BRANCH is: ${params.BRANCH}"
         }
