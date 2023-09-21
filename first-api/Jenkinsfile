@@ -26,7 +26,7 @@ pipeline{
           echo "The region is: ${params.region}"
           echo "The BRANCH is: ${params.BRANCH}"
         }
-      }
     }
   }
 }
+
