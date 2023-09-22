@@ -1,11 +1,30 @@
 pipeline{
   agent {label 'ubuntu'}
   options { buildDiscarder(logRotator(numToKeepStr: '3'))}
+  parameters {
+    choice(choices: ['GSDEV', 'GSUAT', 'GSPRD'], name:'env', description: 'Environment to deploy')
+    choice(choices: ['us-east-2', 'us-east-1'], name: 'region')
+    gitParameter(
+      branchFilter: 'origin/(.*)',
+      defaultValue: 'master',
+      name: 'BRANCH',
+      type: 'PT_BRANCH'
+    )
+  }
   stages{
     stage('Say Hello!'){
       steps{
         script {
           echo "Hello, Friend, second api"
+        }
+      }
+    }
+    stage('Print the parameters'){
+      steps{
+        script{
+          echo "The environment is: ${params.env}"
+          echo "The region is: ${params.region}"
+          echo "The BRANCH is: ${params.BRANCH}"
         }
       }
     }
