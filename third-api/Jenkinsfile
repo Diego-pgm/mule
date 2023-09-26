@@ -16,7 +16,7 @@ pipeline{
       steps{
         script{
           currentBuild.displayName = "${params.env}"-"${params.BRANCH}-${BUILD_NUMBER}"
-          echo "CurrentUser: $env.BUILD_USER"
+          echo "CurrentUser: $env.BUILD_USER_ID"
         }
       }
     }
