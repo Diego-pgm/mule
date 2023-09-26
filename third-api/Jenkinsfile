@@ -16,7 +16,7 @@ pipeline{
       steps{
         script{
           if ((params.currentUser)){
-            echo "${params.currentUser}"
+            currentUser = ${params.currentUser}
           }
           currentBuild.displayName = "${params.env}-${params.BRANCH}-${BUILD_NUMBER}"
           currentUser = currentBuild.getBuildCauses()[0].userId
