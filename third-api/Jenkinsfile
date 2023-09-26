@@ -17,6 +17,9 @@ pipeline{
         script{
           currentBuild.displayName = "${params.env}-${params.BRANCH}-${BUILD_NUMBER}"
           currentUser = currentBuild.getBuildCauses()[0].userId
+          if ((currentUser == '')){
+            currentUser = "${params.currentUser}"
+          }
           echo "BUILD_TRIGGER_BY: ${currentUser}"
           if (!(currentUser ==~ /(dperez)/)){
             error "User ${currentUser} is not allowed to deploy"
