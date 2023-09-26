@@ -15,9 +15,6 @@ pipeline{
     stage('Prepare'){
       steps{
         script{
-          if ((params.currentUser)){
-            currentUser = "${params.currentUser}"
-          }
           currentBuild.displayName = "${params.env}-${params.BRANCH}-${BUILD_NUMBER}"
           currentUser = currentBuild.getBuildCauses()[0].userId
           echo "BUILD_TRIGGER_BY: ${currentUser}"
