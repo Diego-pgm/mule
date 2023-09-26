@@ -15,9 +15,13 @@ pipeline{
     stage('Prepare'){
       steps{
         script{
+          echo "${params.currentUser}"
           currentBuild.displayName = "${params.env}-${params.BRANCH}-${BUILD_NUMBER}"
           currentUser = currentBuild.getBuildCauses()[0].userId
           echo "BUILD_TRIGGER_BY: ${currentUser}"
+          if (!(currentUser ==~ /(dperez)/)){
+            error "User ${currentUser} is not allowed to deploy"
+          }
         }
       }
     }
